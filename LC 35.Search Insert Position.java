@@ -39,6 +39,6 @@ class Solution {
                 right = mid - 1;
         }
         
-        return right + 1;
+        return right + 1; // note: you can also do return left (without having to do +1)
     }
 }
