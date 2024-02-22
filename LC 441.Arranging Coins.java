@@ -24,6 +24,8 @@ Constraints:
 
  */
 
+ // THIS IS THE BASIC ITERATIVE SOLUTION: I DONT COMPLETELY UNDERSTAND IT
+ // REDO!!
 class Solution {
     public int arrangeCoins(int n) {
         int count = 1;
