@@ -2,17 +2,19 @@
 1. Two Sum
 
 https://leetcode.com/problems/two-sum/description/
-
-hash map
 '''
 
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
-        previousMap = {} # value:index
-        for i in range(0, len(nums)):
-            diff = target - nums[i]
-            if diff in previousMap:
-                return [previousMap[diff], i]
-            previousMap[nums[i]] = i
-    
+        # DONT DO THE BRUTE FORCE SOLUTION -> O(N^2)
+
+        # FIRST CREATE A DICT 
+        hashmap = {}
+        for i in range(len(nums)):
+            # IF TARGET - ARRAY NUM IS IN DICT
+            if target - nums[i] in hashmap:
+                return hashmap[target - nums[i]], i
+            else:
+                # ELSE ADD ARRAY NUM TO DICT
+                hashmap[nums[i]] = i
         
