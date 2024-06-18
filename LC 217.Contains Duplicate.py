@@ -2,32 +2,35 @@
 217. Contains Duplicate
 
 https://leetcode.com/problems/contains-duplicate/description/
-
-array
 '''
 
-# INITIAL SOLUTION: PROBLEM - TIME LIMIT EXCEEDED
-class Solution:
-    def containsDuplicate(self, nums: List[int]) -> bool:
-        newList = []
-        answer = False
-        for i in nums:
-            if i not in newList:
-                newList.append(i)
-            else:
-                answer = True
-                return answer
-                break
-        return answer
-    
-# THE IDEA ABOVE IS CORRECT, BUT BY IMPLEMENTING IT USING HASHSET, RATHER THAN LIST, TIME IS SAVED
+# LIST SOLUTION (SELF CODED): [GIVES TIME LIMIT EXCEEDED] [O(N^2)]
 
-# HASHSET SOLUTION
 class Solution:
     def containsDuplicate(self, nums: List[int]) -> bool:
+        # my LIST solution:
+
+        l = []
+        for i in nums:
+            if i in l:
+                return True
+            else:
+                l.append(i)
+        return False
+    
+# HASH SET SOLUTION
+
+class Solution:
+    def containsDuplicate(self, nums: List[int]) -> bool:
+        # USING HASHSET INSTEAD OF LIST - CAUSE ITS BETTER TIME WISE
+        # O(n) -> Time complexity
+        # O(n) -> MEMORY complexity (BCZ OF HASHSET)
+
         hashset = set()
+
         for i in nums:
             if i in hashset:
                 return True
-            hashset.add(i) # .add not .append
+            hashset.add(i)
         return False
+        
