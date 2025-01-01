@@ -48,3 +48,24 @@ class Solution:
             return False # IMP OTHERWISE IT RETURNS NULL
         
 # LEARN THE HASHMAP SOLUTION FOR THIS!
+# the hashmap solution:
+
+class Solution:
+    def isValid(self, s: str) -> bool:
+        # hashmap is basically a dictionary
+        hashmap = {")":"(", "}":"{", "]":"["}
+        stack = []
+
+        for i in s:
+            if len(stack) == 0:
+                stack.append(i)
+            elif i in "({[":
+                stack.append(i)
+            elif hashmap[i] == stack[-1]:
+                stack.pop()
+            else:
+                return False
+        if len(stack) == 0:
+            return True
+        else:
+            return False
