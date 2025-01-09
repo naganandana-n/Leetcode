@@ -1,9 +1,10 @@
 '''
 3042. Count Prefix and Suffix Pairs I
 
-NOT COMPLETED
+COMPLETED
 '''
 
+'''
 class Solution:
     def countPrefixSuffixPairs(self, words: List[str]) -> int:
         sortedWords = sorted(words, key = len)
@@ -21,4 +22,20 @@ class Solution:
                     elif j == words[k]:
                         answer += 1
                     # print(j + " " + words[k][0:len(j)]+ " " +words[k][(-1 * len(j) - 1) : -1])
+        return answer
+'''
+
+# redoing it the next day
+class Solution:
+    def countPrefixSuffixPairs(self, words: List[str]) -> int:
+        answer = 0
+        for i, j in enumerate(words):
+            if j == len(words) - 1:
+                return answer
+            for k in range(i+1, len(words)):
+                if j == words[k][0:len(j)]:
+                    revJ = j[::-1] # reversing a string
+                    revK = words[k][::-1]
+                    if revJ == revK[0:len(j)]:
+                        answer += 1
         return answer
