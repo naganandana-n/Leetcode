@@ -21,3 +21,31 @@ class Solution:
                 answer.append(count)
             
         return answer
+    
+# better solution: [beats 49 %]
+
+
+class Solution:
+    def findThePrefixCommonArray(self, A: List[int], B: List[int]) -> List[int]:
+        # the solution i see here, is to have a common array
+        # since both the lists are permutations of each other (ie),
+        # they both have the same elements and that also only 1 of
+        # each. Append every element into the common array, if the
+        # element occurs twice, add it to the count answer array
+
+        common = []
+        answer = []
+        acount = 0
+        for i in range(len(A)):
+            if A[i] in common:
+                # print(A[i])
+                acount += 1
+            common.append(A[i])
+            if B[i] in common:
+                # print(B[i])
+                acount += 1
+            common.append(B[i])
+            answer.append(acount)
+
+        return answer
+
