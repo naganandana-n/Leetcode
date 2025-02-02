@@ -37,7 +37,6 @@ class Solution:
         
         return True
 
-'''
 
 # new day, new solution
 # first i want to try and understand why my exisitng solution works for the test cases but gives me 'ValueError: substring not found' for the other cases
@@ -86,3 +85,38 @@ class Solution:
         return True
 
 # still getting wrong answer -> im going to think and refine this stupid solution - for the memes.
+
+'''
+
+'''
+# dam i see a two pointers solution for this rn
+# ok no nvm, i just saw something - dont know what to do
+
+class Solution:
+    def isSubsequence(self, s: str, t: str) -> bool:
+
+        l = []
+        for i in s:
+            if i in t:
+                l.append(t.index(i))
+                t = t[:t.index(i)] + " " + t[t.index(i) + 1:]
+                # just a work around way to ensure the same index is not taken twice
+
+            else:
+                return False
+
+        print(l)
+        
+        for j, k in enumerate(l):
+            if j == 0:
+                continue
+            else:
+                if k <= l[j-1]:
+                    return False
+        return True
+
+        
+        # this fails in a testcase that i hadn't thought of:
+        # s = ab, t = baab -> my soluiton only looks at the first occurance of a and b and says false
+        # which is not true
+'''
