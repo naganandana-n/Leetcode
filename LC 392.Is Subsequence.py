@@ -120,3 +120,22 @@ class Solution:
         # s = ab, t = baab -> my soluiton only looks at the first occurance of a and b and says false
         # which is not true
 '''
+
+# ok so the solution here seems to be:
+# have 2 POINTERS, one for s and one for t
+# go through a while loop
+# if s[] in t[] then add s
+# and overall add t every iteration
+# but idn how this accounts for yesterdays case
+# oh yeah nvm it does -> look up for the testcase
+
+class Solution:
+    def isSubsequence(self, s: str, t: str) -> bool:
+
+        counts = 0
+        countt = 0
+        while counts < len(s) and countt < len(t):
+            if s[counts] == t[countt]:
+                counts += 1
+            countt += 1
+        return counts == len(s)
