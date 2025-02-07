@@ -37,5 +37,21 @@ class Solution:
 
 # ill implement this tomorrow mornign to see how much i remember
 
+# morning implementaion
 class Solution:
     def tupleSameProduct(self, nums: List[int]) -> int:
+
+        products = collections.Counter()
+
+        for i, j in enumerate(nums):
+            for k in range(i):
+                prod = nums[k] * j
+                products[prod] += 1
+        
+        answer = 0
+
+        for i in products:
+            if products[i] > 1:
+                answer += products[i] * (products[i] - 1) * 4
+        
+        return answer
